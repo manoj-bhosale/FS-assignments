@@ -3,27 +3,27 @@
 	angular.module('ShoppingListCheckOff', [])
 	.controller('itemsToBuyCtrl', itemsToBuyCtrl)
 	.controller('itemsBoughtCtrl', itemsBoughtCtrl)
-	.service('ShoppingListService', ShoppingListService);
+	.service('ShoppingListCheckOffService', ShoppingListCheckOffService);
 
-	itemsToBuyCtrl.$inject = ['ShoppingListService'];
-	function itemsToBuyCtrl(ShoppingListService){
+	itemsToBuyCtrl.$inject = ['ShoppingListCheckOffService'];
+	function itemsToBuyCtrl(ShoppingListCheckOffService){
 		var toBuy = this;
 		
-		toBuy.items = ShoppingListService.getItemsToBuy();
+		toBuy.items = ShoppingListCheckOffService.getItemsToBuy();
 
 		toBuy.markAsBought = function(index){
-			ShoppingListService.markAsBought(index);
+			ShoppingListCheckOffService.markAsBought(index);
 		}
 	}
 
-	itemsBoughtCtrl.$inject = ['ShoppingListService'];
-	function itemsBoughtCtrl(ShoppingListService){
+	itemsBoughtCtrl.$inject = ['ShoppingListCheckOffService'];
+	function itemsBoughtCtrl(ShoppingListCheckOffService){
 		var bought = this;
 		
-		bought.items = ShoppingListService.getBoughtItems();
+		bought.items = ShoppingListCheckOffService.getBoughtItems();
 	}
 
-	function ShoppingListService() {
+	function ShoppingListCheckOffService() {
 		var service = this;
 		var toBuyItems = [
 				{ name: "Cookies", quantity: 10 },
@@ -54,9 +54,9 @@
 		}
 	}
 
-	// function ShoppingListService(){
+	// function ShoppingListCheckOffService(){
 	// 	return function() {
-	// 		return new ShoppingListService();
+	// 		return new ShoppingListCheckOffService();
 	// 	}
 	// }
 }());

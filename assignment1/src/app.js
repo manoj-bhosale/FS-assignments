@@ -1,27 +1,19 @@
 (function(){
 	angular.module('LunchCheck', [])
-	.controller('LunchCheckController', LunchCheckController);
+	.controller('LunchCheckController', LunchCheckController)
+	.filter('makeUpperCase', makeUpperCaseFilter);
 
-	LunchCheckController.$inject = ['$scope'];
+	LunchCheckController.$inject = ['$scope', 'makeUpperCaseFilter'];
 
-	function LunchCheckController($scope){
-		$scope.lunchMenu = $scope.message = $scope.cssClass ='';
+	function LunchCheckController($scope, makeUpperCaseFilter){
+		$scope.lunchMenu = '';
 
-		$scope.isTooMuch = function(){
-			var menuItemsArray = $scope.lunchMenu.split(','),
+		//$scope.lunchMenu = makeUpperCaseFilter($scope.lunchMenu);
+	}
 
-				// To NOT considering empty item
-				validMenuItemsArray = menuItemsArray.filter(function(menuItem){
-					return menuItem.trim() !== '';
-				});
-				
-			if(validMenuItemsArray.length > 0) {
-				$scope.message = validMenuItemsArray.length <= 3 ? 'Enjoy!' : 'Too much!'
-				$scope.cssClass = 'has-success';
-			} else {
-				$scope.message = 'Please enter data first';
-				$scope.cssClass = 'has-error';
-			}
+	function makeUpperCaseFilter() {
+		return function(msg){
+			return msg.toUpperCase();
 		}
 	}
 }());

@@ -54,9 +54,4 @@
 		}
 	}
 
-	// function ShoppingListCheckOffService(){
-	// 	return function() {
-	// 		return new ShoppingListCheckOffService();
-	// 	}
-	// }
 }());

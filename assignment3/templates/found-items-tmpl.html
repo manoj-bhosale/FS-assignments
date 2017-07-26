@@ -1,6 +1,7 @@
 <div>
+    <div class="error" ng-if="list.items.length === 0 || vm.searchTerm === ''">Nothing Found!!!</div>
     <ul>
-        <li ng-repeat="item in items"><strong>{{item.short_name}}</strong> - {{item.description}} 
-        <a class="btn btn-link" ng-click="onRemove({index: $index})">Don't want this one!</button></li>
+        <li ng-repeat="item in list.items"><strong>{{item.short_name}}</strong> - {{item.description}} 
+        <a class="btn btn-link" ng-click="list.onRemove({index: $index});">Don't want this one!</button></li>
     </ul>
 <div>

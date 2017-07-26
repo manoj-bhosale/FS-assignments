@@ -12,7 +12,6 @@
     function MenuSearchCtrl(MenuService) {
         var vm = this;
         vm.found = [];
-        vm.searchTerm = 'chicken';
         vm.narrowSearch = function() {
             if (vm.searchTerm === '' || typeof vm.searchTerm === 'undefined') {
                 return;
@@ -21,7 +20,7 @@
             promise.then(function(response) {
                 var menuItems = response.data.menu_items;
                 angular.forEach(menuItems, function(menuItem) {
-                    if (menuItem.description.indexOf(vm.searchTerm) > -1) {
+                    if (menuItem.description.indexOf(vm.searchTerm.toLowerCase()) > -1) {
                         vm.found.push(menuItem);
                     }
                 });
@@ -52,8 +51,15 @@
             scope: {
                 items: '<',
                 onRemove: '&'
-            }
-        }
+            },
+            controller: MenuItemsDirectiveCtrl,
+            controllerAs: 'list',
+            bindToController: true
+        };
+    }
+
+    function MenuItemsDirectiveCtrl() {
+        var list = this;
     }
 
 }());

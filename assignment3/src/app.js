@@ -1,10 +1,9 @@
 (function() {
     'use strict';
-
     angular.module('MenuSearchApp', [])
         .controller('MenuSearchCtrl', MenuSearchCtrl)
         .service('MenuService', MenuService)
-        .constant('ApiBasePath', 'http://davids-restaurant.herokuapp.com')
+        .constant('ApiBasePath', 'https://davids-restaurant.herokuapp.com')
         .directive('foundItems', MenuItemsDirective);
 
     MenuSearchCtrl.$inject = ['MenuService'];

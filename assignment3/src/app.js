@@ -12,6 +12,7 @@
         var vm = this;
         vm.found = [];
         vm.narrowSearch = function() {
+            vm.found.length = 0;
             if (vm.searchTerm === '' || typeof vm.searchTerm === 'undefined') {
                 return;
             }
